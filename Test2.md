@@ -1,10 +1,6 @@
 
 ### PART I: THE BROODDEN DOCTRINE (WHY THIS IS UNIQUE)
 
-Most homelab tools fall into two uninspired categories:
-1. Generic Proxmox wrappers that just call `pct create` or wrap Proxmox GUI features in Bash/Python.
-2. Heavy Terraform / Ansible scripts that take 10 minutes to execute, leave orphaned state files, and suffer from configuration drift.
-
 **BroodDen's Uniqueness:**
 * **The Declarative Genome:** You do not configure an LXC container *after* it is created. You define the entire operating system, systemd services, API code, and network policies in a single Nix expression (`genome.nix`).
 * **Instant Immutable Incubation:** `BroodDen` compiles that Nix expression into a hyper-stripped NixOS LXC rootfs tarball (~30MB–50MB), uploads it via the Proxmox API (`POST /api2/json/nodes/{node}/storage/local/upload`), and awakens a running, fully-configured container in under **2 seconds**.
