@@ -1,6 +1,3 @@
-# BROODDEN: SOLO-DEV EXECUTION TRACKER & GATES v1.0
-
-**Document Status:** ACTIVE
 **Operating Principle:** Do not build the Seeding script until the Flake compiles. Do not build the CLI until the API works. Do not build the API until the Stream-Seeder works.
 
 ---
