@@ -304,13 +304,3 @@ BroodDen/
 ├── pyproject.toml              # Dependencies (fastapi, uvicorn, httpx, typer, rich)
 └── README.md                   # BroodDen Specification & Architecture
 ```
-
----
-
-### SUMMARY & NEXT STEPS
-
-1. **The Vision is Refined:** `BroodDen` is an opinionated, alien-flavored NixOS Container Incubation Fabric for Proxmox.
-2. **The MVP is Unlocked:** You do not need complex automated bootstrap pipelines on Day 1. Spin up VMID 100 (`brood-matriarch`), launch `BroodAPI`, and start gestating Drones over HTTP today.
-3. **The Design Language is Locked:** All CLI outputs adhere strictly to the scale-proof **Option 1 Mono-Frame `BroodDesign`** format.
-
-Ready to commit `brood_api/main.py` and `brood_api/schemas.py` to `github.com/pinbraid/BroodDen`?
