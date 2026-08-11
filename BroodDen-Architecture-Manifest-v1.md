@@ -1,11 +1,7 @@
-### ARTIFACT 1: `BroodDen-Architecture-Manifest-v1.md`
-
 # BROODDEN PLATFORM SPECIFICATION v1.0
-## Declarative NixOS LXC Incubation Fabric & Orchestration Architecture
+**Declarative NixOS LXC Incubation Fabric & Orchestration Architecture**
 
----
-
-### 1. EXECUTIVE SUMMARY & THE BROOD LEXICON
+## THE LEXICON
 
 `BroodDen` is an opinionated, API-driven **NixOS Container Incubation Fabric** designed for Proxmox VE. It bypasses configuration drift, imperative shell scripts, and heavy state-management tools by treating infrastructure as an immutable biological ecosystem powered natively by **Nix Flakes**.
 
@@ -20,9 +16,7 @@ To maintain operational precision, the platform adopts the following taxonomy:
 *   **The Nursery (`local:vztmpl`):** The hypervisor storage volume holding compiled rootfs tarballs (`.tar.xz`).
 *   **Cull (`Purge`):** The immediate, zero-residual destruction of a Drone instance and its associated hypervisor state.
 
----
-
-### 2. THE BROODDEN DOCTRINE: NATIVE FLAKE ARCHITECTURE
+## THE BROODDEN DOCTRINE: NATIVE FLAKE ARCHITECTURE
 
 Following the deprecation of third-party tools like `nixos-generators`, BroodDen relies entirely on the modern, robust **Native Nix Flake** ecosystem.
 
@@ -34,17 +28,14 @@ Following the deprecation of third-party tools like `nixos-generators`, BroodDen
 4. The Nix daemon natively outputs a hyper-stripped NixOS LXC rootfs tarball in the `./result/` symlink.
 5. `BroodAPI` uploads this tarball directly to the Proxmox REST API (`POST /api2/json/nodes/{node}/storage/local/upload`) and awakens the Drone.
 
----
-
-### 3. TWO-STAGE GENESIS (THE STREAM-SEEDER INCEPTION)
+## TWO-STAGE GENESIS (THE STREAM-SEEDER INCEPTION)
 
 To control a Hive, it must be seeded with a Queen (VMID 100) without polluting the hypervisor OS or exposing PVE to the public WAN.
 
 *   **STAGE 0 (The Stream-Seeder):** Executed from a local workstation/CDE via `seed.py`. The script fetches the pre-compiled `brood-queen.tar.xz` from GitHub Release Assets (or a local build) and streams it directly into the Proxmox REST API (`POST /storage/local/upload`). It then issues `POST /lxc` passing `ostype=unmanaged` and `features="nesting=1"` to instantiate VMID 100.
 *   **STAGE 1 (Autonomous Gestation):** The Queen boots, initializes `BroodAPI` on port 8000 via systemd, and listens for the `brood` CLI. She takes over all future Drone compilation (`nix build`) and orchestration autonomously.
----
 
-### 4. ARCHITECTURAL TOPOLOGY
+## ARCHITECTURAL TOPOLOGY
 
 ```text
 ┌──────────────────────────────────────────────────────────────────────────────────┐
